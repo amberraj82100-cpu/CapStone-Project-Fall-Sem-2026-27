@@ -28,7 +28,7 @@ const DOMAINS = [
     dimVar: 'var(--dysgraphia-dim)',
     borderVar: 'var(--dysgraphia-border)',
     desc: 'Fine-motor trajectory stability, canvas stroke jitter, letter-formation kinematics, and visual-spatial sentence alignment.',
-    count: 5,
+    count: 6,
   },
   {
     key: 'dyscalculia',
@@ -38,7 +38,7 @@ const DOMAINS = [
     dimVar: 'var(--dyscalculia-dim)',
     borderVar: 'var(--dyscalculia-border)',
     desc: 'Non-verbal subitizing flash speed, magnitude comparison, mental number line scaling, and arithmetic fact fluency.',
-    count: 5,
+    count: 6,
   },
 ];
 
@@ -46,6 +46,7 @@ export default function RegistrationView({ onStart, onOpenHistory }) {
   const [form, setForm] = useState({
     parentName: '', parentEmail: '', parentPhone: '',
     childName: '', childAge: 8, childGrade: '2nd Grade',
+    knownDiagnoses: { DYSLEXIA: 'unknown', DYSGRAPHIA: 'unknown', DYSCALCULIA: 'unknown' },
   });
   const [errors, setErrors] = useState({});
 
@@ -112,7 +113,7 @@ export default function RegistrationView({ onStart, onOpenHistory }) {
             lineHeight: 1.65,
           }}
         >
-          A 15-question interactive assessment measuring core neuro-cognitive indicators for{' '}
+          A 17-question interactive assessment measuring core neuro-cognitive indicators for{' '}
           <strong style={{ color: 'var(--dyslexia)' }}>Dyslexia</strong>,{' '}
           <strong style={{ color: 'var(--dysgraphia)' }}>Dysgraphia</strong>, and{' '}
           <strong style={{ color: 'var(--dyscalculia)' }}>Dyscalculia</strong>.
@@ -130,10 +131,10 @@ export default function RegistrationView({ onStart, onOpenHistory }) {
           }}
         >
           {[
-            { label: 'Questions', value: '15' },
+            { label: 'Questions', value: '17' },
             { label: 'Domains', value: '3' },
-            { label: 'Parameters', value: '15' },
-            { label: 'Minutes', value: '~12' },
+            { label: 'Parameters', value: '17' },
+            { label: 'Minutes', value: '~16' },
           ].map(s => (
             <div key={s.label} className="stat-chip">
               <strong>{s.value}</strong>
@@ -396,6 +397,32 @@ export default function RegistrationView({ onStart, onOpenHistory }) {
               </div>
             </div>
           </div>
+
+          {/* Optional: existing diagnoses (used only to improve the models) */}
+          <fieldset style={{ border: '1px solid var(--border-subtle)', borderRadius: 'var(--r-md)', padding: '14px 16px', marginTop: 28 }}>
+            <legend style={{ padding: '0 6px', fontSize: '0.85rem', fontWeight: 600 }}>Existing diagnosis (optional)</legend>
+            <p style={{ margin: '0 0 10px', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+              If a professional has already assessed your child, tell us the outcome. It never changes this report;
+              it only helps improve the screening models.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
+              {[['DYSLEXIA', 'Dyslexia'], ['DYSGRAPHIA', 'Dysgraphia'], ['DYSCALCULIA', 'Dyscalculia']].map(([key, label]) => (
+                <label key={key} htmlFor={`known-${key}`} style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: '0.8rem' }}>
+                  {label}
+                  <select
+                    id={`known-${key}`}
+                    className="custom-input"
+                    value={form.knownDiagnoses[key]}
+                    onChange={e => set('knownDiagnoses', { ...form.knownDiagnoses, [key]: e.target.value })}
+                  >
+                    <option value="unknown">Not assessed / don’t know</option>
+                    <option value="yes">Diagnosed</option>
+                    <option value="no">Assessed, not diagnosed</option>
+                  </select>
+                </label>
+              ))}
+            </div>
+          </fieldset>
 
           {/* Screening disclaimer */}
           <div

@@ -1,0 +1,241 @@
+{
+  "task": "dyslexia",
+  "n_samples": 5039,
+  "n_positive": 540,
+  "n_features": 191,
+  "views": {
+    "Demographics": 5,
+    "Task accuracy": 93,
+    "Interaction behaviour": 93
+  },
+  "majority_baseline_accuracy": 0.8928358801349474,
+  "best_model": "Hybrid fusion | views + early (LR meta-learner)",
+  "best_model_metrics": {
+    "balanced_accuracy": 0.7693851604663617,
+    "roc_auc": 0.8627685105077887,
+    "pr_auc": 0.49115384342510915,
+    "sensitivity": 0.7814814814814814,
+    "specificity": 0.7572888394512421,
+    "precision": 0.2838372551110195,
+    "f1": 0.4144577750594552,
+    "mcc": 0.366984682694003,
+    "accuracy": 0.7598800460270172,
+    "balanced_accuracy_std": 0.019127212693574466,
+    "roc_auc_std": 0.020043038916313604,
+    "pr_auc_std": 0.012782137774978592,
+    "sensitivity_std": 0.04171807528173636,
+    "specificity_std": 0.05313578862298114,
+    "precision_std": 0.03870753183191539,
+    "f1_std": 0.038010232816996115,
+    "mcc_std": 0.03887022855287726,
+    "accuracy_std": 0.04443100244468755
+  },
+  "best_model_pooled_auc_95ci": [
+    0.8465462537413383,
+    0.8764868837791673
+  ],
+  "best_model_pooled_confusion": {
+    "tp": 422,
+    "fp": 1092,
+    "tn": 3407,
+    "fn": 118
+  },
+  "best_per_family": [
+    {
+      "family": "Hybrid fusion",
+      "model": "Hybrid fusion | views + early (LR meta-learner)",
+      "roc_auc": 0.8627685105077887,
+      "roc_auc_std": 0.020043038916313604,
+      "balanced_accuracy": 0.7693851604663617,
+      "balanced_accuracy_std": 0.019127212693574466,
+      "sensitivity": 0.7814814814814814,
+      "specificity": 0.7572888394512421,
+      "f1": 0.4144577750594552,
+      "accuracy": 0.7598800460270172
+    },
+    {
+      "family": "Early fusion",
+      "model": "Early fusion | XGBoost",
+      "roc_auc": 0.8618229010743533,
+      "roc_auc_std": 0.02288079203970729,
+      "balanced_accuracy": 0.777862316153751,
+      "balanced_accuracy_std": 0.026985945347307083,
+      "sensitivity": 0.8111111111111111,
+      "specificity": 0.744613521196391,
+      "f1": 0.41364723138040593,
+      "accuracy": 0.7517401995554925
+    },
+    {
+      "family": "Late fusion",
+      "model": "Late fusion | soft voting",
+      "roc_auc": 0.8459317852025799,
+      "roc_auc_std": 0.026136327088865194,
+      "balanced_accuracy": 0.7607409467309356,
+      "balanced_accuracy_std": 0.022413245877691213,
+      "sensitivity": 0.8,
+      "specificity": 0.7214818934618712,
+      "f1": 0.3925765411049732,
+      "accuracy": 0.7298988430194984
+    },
+    {
+      "family": "Unimodal",
+      "model": "Unimodal | Interaction behaviour | XGBoost",
+      "roc_auc": 0.8038272634889246,
+      "roc_auc_std": 0.0386707058936445,
+      "balanced_accuracy": 0.7338174926873482,
+      "balanced_accuracy_std": 0.03135256370228487,
+      "sensitivity": 0.7537037037037038,
+      "specificity": 0.7139312816709925,
+      "f1": 0.36553292180362407,
+      "accuracy": 0.718194661181255
+    }
+  ],
+  "fusion_gain_auc_vs_best_unimodal": 0.05894124701886405,
+  "fold_info": [
+    {
+      "fold": 0,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | XGBoost",
+        "Interaction behaviour": "Unimodal | Interaction behaviour | XGBoost"
+      },
+      "best_early": "Early fusion | XGBoost",
+      "late_weights": {
+        "Demographics": 0.26474038357158713,
+        "Task accuracy": 0.36623358106542625,
+        "Interaction behaviour": 0.3690260353629866
+      },
+      "stacking_coef": {
+        "Demographics": 0.754947314495384,
+        "Task accuracy": 0.33889789201525433,
+        "Interaction behaviour": 0.5616621057884345
+      }
+    },
+    {
+      "fold": 1,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | XGBoost",
+        "Interaction behaviour": "Unimodal | Interaction behaviour | XGBoost"
+      },
+      "best_early": "Early fusion | XGBoost",
+      "late_weights": {
+        "Demographics": 0.2780247773950438,
+        "Task accuracy": 0.35579424194636966,
+        "Interaction behaviour": 0.36618098065858656
+      },
+      "stacking_coef": {
+        "Demographics": 0.8381652174838405,
+        "Task accuracy": 0.22961236091222784,
+        "Interaction behaviour": 0.6264224704151754
+      }
+    },
+    {
+      "fold": 2,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | XGBoost",
+        "Interaction behaviour": "Unimodal | Interaction behaviour | XGBoost"
+      },
+      "best_early": "Early fusion | XGBoost",
+      "late_weights": {
+        "Demographics": 0.2514935303168858,
+        "Task accuracy": 0.36971416993977363,
+        "Interaction behaviour": 0.3787922997433405
+      },
+      "stacking_coef": {
+        "Demographics": 0.7677248320240053,
+        "Task accuracy": 0.2901175624439235,
+        "Interaction behaviour": 0.6383268761742339
+      }
+    },
+    {
+      "fold": 3,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | XGBoost",
+        "Interaction behaviour": "Unimodal | Interaction behaviour | XGBoost"
+      },
+      "best_early": "Early fusion | XGBoost",
+      "late_weights": {
+        "Demographics": 0.2574809899707614,
+        "Task accuracy": 0.36880398320190544,
+        "Interaction behaviour": 0.37371502682733315
+      },
+      "stacking_coef": {
+        "Demographics": 0.808213886190404,
+        "Task accuracy": 0.34250826357462477,
+        "Interaction behaviour": 0.5627059227408849
+      }
+    },
+    {
+      "fold": 4,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | XGBoost",
+        "Interaction behaviour": "Unimodal | Interaction behaviour | XGBoost"
+      },
+      "best_early": "Early fusion | XGBoost",
+      "late_weights": {
+        "Demographics": 0.288876381869737,
+        "Task accuracy": 0.34808015422144906,
+        "Interaction behaviour": 0.3630434639088139
+      },
+      "stacking_coef": {
+        "Demographics": 0.8225825124537308,
+        "Task accuracy": 0.27187984833360757,
+        "Interaction behaviour": 0.5789525118542335
+      }
+    }
+  ],
+  "by_device": {
+    "desktop": {
+      "n": 3644,
+      "roc_auc": 0.8831190225167558,
+      "balanced_accuracy": 0.7887673519592339
+    },
+    "tablet": {
+      "n": 1395,
+      "roc_auc": 0.7973027157068858,
+      "balanced_accuracy": 0.7187357766748304
+    }
+  },
+  "xai": {
+    "modality_share": {
+      "Demographics": 0.2210155725479126,
+      "Task accuracy": 0.35325920581817627,
+      "Interaction behaviour": 0.4257252514362335
+    },
+    "top_features": {
+      "Nativelang": 0.6817976832389832,
+      "Age": 0.47911664843559265,
+      "Clicks28": 0.3652026653289795,
+      "Clicks24": 0.32532915472984314,
+      "Clicks25": 0.2793962061405182,
+      "Hits24": 0.14115633070468903,
+      "Hits22": 0.1331724375486374,
+      "Hits28": 0.11756391078233719,
+      "Clicks27": 0.09268040955066681,
+      "Hits4": 0.08342935144901276,
+      "Hits20": 0.08169462531805038,
+      "Clicks20": 0.07681658118963242,
+      "Accuracy31": 0.0619906485080719,
+      "Hits25": 0.056910328567028046,
+      "Accuracy13": 0.05204002186655998
+    },
+    "top_questions": {
+      "Q24": 0.5598033647984266,
+      "Q28": 0.5500932498835027,
+      "Q25": 0.3837281824089587,
+      "Q20": 0.2593024568632245,
+      "Q22": 0.23625704599544406,
+      "Q04": 0.19450415764003992,
+      "Q27": 0.1778931599110365,
+      "Q31": 0.1743035838007927,
+      "Q07": 0.1466820859350264,
+      "Q23": 0.12600272498093545
+    },
+    "local_example_index": 3768
+  },
+  "runtime_sec": 196.3293685913086
+}

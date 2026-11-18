@@ -192,7 +192,7 @@ public class AssessmentScoringService {
         }
     }
 
-    private void synthesizeOverall(AssessmentReport report) {
+    public void synthesizeOverall(AssessmentReport report) {
         int highRiskCount = 0;
         int moderateCount = 0;
 
@@ -219,6 +219,45 @@ public class AssessmentScoringService {
         if (report.getActionableRecommendations().isEmpty()) {
             report.getActionableRecommendations().add("Continue nurturing a rich literacy and numeracy home environment with daily storybook reading and playful math puzzles.");
             report.getActionableRecommendations().add("Maintain a balanced mix of gross-motor and fine-motor activities (coloring, building blocks, outdoor play).");
+        }
+    }
+
+    /**
+     * Attach the ML service's results. For each domain where a model trained on real data scored the session,
+     * its risk level replaces the rule-based one. Models trained on synthetic data are shown but never override.
+     */
+    @SuppressWarnings("unchecked")
+    public void applyModelResults(AssessmentReport report, Map<String, Object> ml) {
+        report.setMlAssessment(ml);
+        if (ml == null || !(ml.get("domains") instanceof Map)) {
+            return;
+        }
+        Map<String, Object> domains = (Map<String, Object>) ml.get("domains");
+        boolean changed = false;
+        for (Map.Entry<String, Object> e : domains.entrySet()) {
+            if (!(e.getValue() instanceof Map)) continue;
+            Map<String, Object> d = (Map<String, Object>) e.getValue();
+            if (!"ok".equals(d.get("status")) || Boolean.TRUE.equals(d.get("synthetic_training_data"))) continue;
+            RiskLevel risk;
+            try {
+                risk = RiskLevel.valueOf(String.valueOf(d.get("risk_level")));
+            } catch (IllegalArgumentException ex) {
+                continue;
+            }
+            switch (e.getKey()) {
+                case "DYSLEXIA" -> report.setDyslexiaRisk(risk);
+                case "DYSGRAPHIA" -> report.setDysgraphiaRisk(risk);
+                case "DYSCALCULIA" -> report.setDyscalculiaRisk(risk);
+                default -> { continue; }
+            }
+            double p = d.get("probability") instanceof Number n ? n.doubleValue() : Double.NaN;
+            report.getClinicalObservations().add(String.format(
+                    "%s: screening model %s estimates a risk probability of %.2f (%s).",
+                    e.getKey().charAt(0) + e.getKey().substring(1).toLowerCase(), d.get("model_version"), p, risk.getLabel()));
+            changed = true;
+        }
+        if (changed) {
+            synthesizeOverall(report);
         }
     }
 }

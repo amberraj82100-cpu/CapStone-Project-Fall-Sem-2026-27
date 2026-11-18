@@ -26,6 +26,7 @@ public class AssessmentReport {
     private List<String> clinicalObservations = new ArrayList<>();
     private List<String> actionableRecommendations = new ArrayList<>();
     private Instant assessedAt = Instant.now();
+    private Map<String, Object> mlAssessment; // response of the ML service /api/score (null if unavailable)
 
     public AssessmentReport() {}
 
@@ -147,5 +148,13 @@ public class AssessmentReport {
 
     public void setAssessedAt(Instant assessedAt) {
         this.assessedAt = assessedAt;
+    }
+
+    public Map<String, Object> getMlAssessment() {
+        return mlAssessment;
+    }
+
+    public void setMlAssessment(Map<String, Object> mlAssessment) {
+        this.mlAssessment = mlAssessment;
     }
 }

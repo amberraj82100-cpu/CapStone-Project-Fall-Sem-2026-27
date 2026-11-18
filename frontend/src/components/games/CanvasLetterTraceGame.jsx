@@ -106,7 +106,15 @@ export default function CanvasLetterTraceGame({ question, onAnswer }) {
 
     const allPassed = hitCheckpoints.every(Boolean);
     const passedCount = hitCheckpoints.filter(Boolean).length;
-    const jitter = strokePoints.length > 10 ? 12.0 : 25.0;
+    // jitter: mean distance (px) of each point from the average of its neighbours (path smoothness)
+    let dev = 0, cnt = 0;
+    for (let i = 2; i < strokePoints.length - 2; i++) {
+      const mx = (strokePoints[i - 2].x + strokePoints[i - 1].x + strokePoints[i + 1].x + strokePoints[i + 2].x) / 4;
+      const my = (strokePoints[i - 2].y + strokePoints[i - 1].y + strokePoints[i + 1].y + strokePoints[i + 2].y) / 4;
+      dev += Math.hypot(strokePoints[i].x - mx, strokePoints[i].y - my);
+      cnt++;
+    }
+    const jitter = cnt ? Number((dev / cnt).toFixed(3)) : 25.0;
 
     onAnswer({
       userAnswer: `Passed ${passedCount}/3 Letter S Checkpoints`,

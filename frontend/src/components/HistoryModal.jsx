@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Search, FileText, Database, Loader2 } from 'lucide-react';
+import OutcomeLabels from './OutcomeLabels';
+import { API_BASE } from '../api';
 
 export default function HistoryModal({ isOpen, onClose, onSelectSession }) {
   const [sessions, setSessions] = useState([]);
@@ -10,8 +12,8 @@ export default function HistoryModal({ isOpen, onClose, onSelectSession }) {
     setLoading(true);
     try {
       const url = query
-        ? `http://localhost:8080/api/assessments/history?childName=${encodeURIComponent(query)}`
-        : `http://localhost:8080/api/assessments/history`;
+        ? `${API_BASE}/api/assessments/history?childName=${encodeURIComponent(query)}`
+        : `${API_BASE}/api/assessments/history`;
       const res = await fetch(url);
       if (res.ok) setSessions(await res.json());
     } catch (err) {
@@ -153,6 +155,7 @@ export default function HistoryModal({ isOpen, onClose, onSelectSession }) {
                         <FileText size={14} /> View Report
                       </button>
                     </div>
+                    {s.status === 'COMPLETED' && <OutcomeLabels session={s} />}
                   </div>
                 );
               })}

@@ -1,0 +1,38 @@
+{
+  "DYSLEXIA": {
+    "model": "Early fusion | XGBoost",
+    "moderate_threshold": 0.47484346138106454,
+    "high_threshold": 0.6951583623886103,
+    "synthetic_training_data": false,
+    "cv_roc_auc": 0.8618229010743533,
+    "cv_balanced_accuracy": 0.777862316153751,
+    "cv_sensitivity": 0.8111111111111111,
+    "cv_specificity": 0.744613521196391,
+    "top_scoring_model": "Hybrid fusion | views + early (LR meta-learner)",
+    "selection_reason": "Within 0.001 ROC-AUC of the top scorer (Hybrid fusion | views + early (LR meta-learner)), well inside the fold-to-fold spread of \u00b10.020, and simpler, so it is preferred."
+  },
+  "DYSGRAPHIA": {
+    "model": "Early fusion | Logistic Regression",
+    "moderate_threshold": 0.67358755943837,
+    "high_threshold": 0.8773908112079017,
+    "synthetic_training_data": false,
+    "cv_roc_auc": 0.9330503098619042,
+    "cv_balanced_accuracy": 0.8498096911140389,
+    "cv_sensitivity": 0.8625823451910409,
+    "cv_specificity": 0.837037037037037,
+    "top_scoring_model": "Early fusion | Logistic Regression",
+    "selection_reason": "Highest held-out ROC-AUC, and no simpler model came within 0.005 of it."
+  },
+  "DYSCALCULIA": {
+    "model": "Early fusion | Logistic Regression",
+    "moderate_threshold": 0.4928530256963733,
+    "high_threshold": 0.7500396892575916,
+    "synthetic_training_data": true,
+    "cv_roc_auc": 0.7414016788668765,
+    "cv_balanced_accuracy": 0.6878534355461138,
+    "cv_sensitivity": 0.6308024691358025,
+    "cv_specificity": 0.744904401956425,
+    "top_scoring_model": "Early fusion | Random Forest",
+    "selection_reason": "Within less than 0.001 ROC-AUC of the top scorer (Early fusion | Random Forest), well inside the fold-to-fold spread of \u00b10.027, and simpler, so it is preferred."
+  }
+}

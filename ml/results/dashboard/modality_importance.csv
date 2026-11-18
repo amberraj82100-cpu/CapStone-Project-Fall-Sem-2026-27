@@ -1,0 +1,12 @@
+experiment,modality,n_features,importance,importance_kind,late_fusion_weight
+dyslexia,Demographics,5,0.221,share of |SHAP|,0.2681
+dyslexia,Task accuracy,93,0.3533,share of |SHAP|,0.3617
+dyslexia,Interaction behaviour,93,0.4257,share of |SHAP|,0.3702
+dysgraphia,Handwriting geometry,25,0.041,AUC drop when shuffled,0.4995
+dysgraphia,Deep visual (EfficientNet-B0),1280,0.3402,AUC drop when shuffled,0.5005
+dyscalculia_castaldi2024,Time perception,4,0.7072,share of |SHAP|,0.8023
+dyscalculia_castaldi2024,Cognitive profile,3,0.2928,share of |SHAP|,0.1977
+dyscalculia_synthetic,Demographics,2,0.0448,share of |SHAP|,0.0189
+dyscalculia_synthetic,Task accuracy,6,0.1537,share of |SHAP|,0.3423
+dyscalculia_synthetic,Response time,11,0.5668,share of |SHAP|,0.3775
+dyscalculia_synthetic,Number-sense profile,8,0.2347,share of |SHAP|,0.2613

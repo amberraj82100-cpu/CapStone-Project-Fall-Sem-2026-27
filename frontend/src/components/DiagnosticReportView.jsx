@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ModelAssessmentPanel from './ModelAssessmentPanel';
 import confetti from 'canvas-confetti';
 import {
   CheckCircle, AlertTriangle, XCircle,
@@ -204,8 +205,11 @@ export default function DiagnosticReportView({ session, onRetake, onOpenHistory 
           })}
         </div>
 
+        {/* ── ML model results ── */}
+        <ModelAssessmentPanel ml={report.mlAssessment} />
+
         {/* ── Parameter Scores ── */}
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: 16 }}>Parameter Scores (All 15 Cognitive Tasks)</h2>
+        <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: 16 }}>Parameter Scores (All Cognitive Tasks)</h2>
 
         <div style={{ background: 'var(--bg-elevated)', borderRadius: 'var(--r-lg)', padding: '20px 22px', marginBottom: 40, border: '1px solid var(--border-faint)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14 }}>

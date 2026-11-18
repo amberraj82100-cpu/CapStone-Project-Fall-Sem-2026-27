@@ -1,5 +1,7 @@
 package com.screening.model;
 
+import java.util.Map;
+
 public class QuestionResponse {
     private int questionId;
     private DisorderDomain domain;
@@ -12,6 +14,7 @@ public class QuestionResponse {
     private int motorHesitationCount;
     private boolean reversalDetected;
     private double magnitudeDistance;
+    private Map<String, Object> rawData; // handwriting image (Q16) or trial logs (Q17) for the ML models
 
     public QuestionResponse() {}
 
@@ -118,5 +121,13 @@ public class QuestionResponse {
 
     public void setMagnitudeDistance(double magnitudeDistance) {
         this.magnitudeDistance = magnitudeDistance;
+    }
+
+    public Map<String, Object> getRawData() {
+        return rawData;
+    }
+
+    public void setRawData(Map<String, Object> rawData) {
+        this.rawData = rawData;
     }
 }

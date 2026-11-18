@@ -308,5 +308,44 @@ public class QuestionBankService {
                 "7",
                 q15Payload
         ));
+
+        // ---------------------------------------------------------
+        // ML INPUT TASKS (Questions 16 - 17)
+        // ---------------------------------------------------------
+
+        // Q16: Copy a sentence by hand -> handwriting image for the dysgraphia model
+        Map<String, Object> q16Payload = new HashMap<>();
+        q16Payload.put("sentence", "The cat sat on the mat.");
+        questionBank.add(new QuestionDefinition(
+                16,
+                DisorderDomain.DYSGRAPHIA,
+                "Free Handwriting Sample (Sentence Copying)",
+                "Captures a handwriting sample for letter-size, spacing, baseline and stroke analysis by the handwriting model.",
+                "Copy Cat: Write the Sentence",
+                "Copy this sentence on the paper below: The cat sat on the mat.",
+                "Copy the sentence: The cat sat on the mat. Write it on the white paper.",
+                "COPY_SENTENCE",
+                List.of(),
+                "",
+                q16Payload
+        ));
+
+        // Q17: Number-sense round -> trial logs for the dyscalculia model
+        Map<String, Object> q17Payload = new HashMap<>();
+        q17Payload.put("trialCounts", Map.of("subitize", 10, "magnitude", 16, "numberline", 10, "sequence", 6, "arithmetic", 10));
+        q17Payload.put("flashMs", 1500);
+        questionBank.add(new QuestionDefinition(
+                17,
+                DisorderDomain.DYSCALCULIA,
+                "Number-Sense Round (Repeated Short Trials)",
+                "Short repeated trials of subitizing, magnitude comparison, number line, sequences and addition, logged per trial.",
+                "Number Sprint: Quick-Fire Round",
+                "A quick round of number puzzles. Answer as fast and as carefully as you can!",
+                "Get ready for a quick round of number puzzles. Answer as fast and carefully as you can.",
+                "NUMBER_ROUND",
+                List.of(),
+                "",
+                q17Payload
+        ));
     }
 }

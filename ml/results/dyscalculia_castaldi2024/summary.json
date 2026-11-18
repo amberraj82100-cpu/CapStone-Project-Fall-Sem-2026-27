@@ -1,0 +1,919 @@
+{
+  "task": "dyscalculia_castaldi2024",
+  "n_samples": 37,
+  "n_positive": 15,
+  "views": {
+    "Time perception": 4,
+    "Cognitive profile": 3
+  },
+  "majority_baseline_accuracy": 0.5945945945945945,
+  "best_model": "Early fusion | Random Forest",
+  "best_model_metrics": {
+    "balanced_accuracy": 0.6496666666666667,
+    "roc_auc": 0.7656666666666666,
+    "pr_auc": 0.7626984126984127,
+    "sensitivity": 0.6333333333333333,
+    "specificity": 0.6659999999999999,
+    "precision": 0.6293809523809524,
+    "f1": 0.5755079365079365,
+    "mcc": 0.3381512749872257,
+    "accuracy": 0.6528571428571428,
+    "balanced_accuracy_std": 0.1611938172264003,
+    "roc_auc_std": 0.16230378001390702,
+    "pr_auc_std": 0.15438463730243682,
+    "sensitivity_std": 0.31043820977155473,
+    "specificity_std": 0.28986978075666725,
+    "precision_std": 0.2714390608854099,
+    "f1_std": 0.207753996342012,
+    "mcc_std": 0.3414021958508532,
+    "accuracy_std": 0.16485829993884304
+  },
+  "best_model_pooled_auc_95ci": null,
+  "best_model_pooled_confusion": {
+    "tp": 95,
+    "fp": 73,
+    "tn": 147,
+    "fn": 55
+  },
+  "best_per_family": [
+    {
+      "family": "Early fusion",
+      "model": "Early fusion | Random Forest",
+      "roc_auc": 0.7656666666666666,
+      "roc_auc_std": 0.16230378001390702,
+      "balanced_accuracy": 0.6496666666666667,
+      "balanced_accuracy_std": 0.1611938172264003,
+      "sensitivity": 0.6333333333333333,
+      "specificity": 0.6659999999999999,
+      "f1": 0.5755079365079365,
+      "accuracy": 0.6528571428571428
+    },
+    {
+      "family": "Unimodal",
+      "model": "Unimodal | Time perception | Logistic Regression",
+      "roc_auc": 0.7653333333333333,
+      "roc_auc_std": 0.17427660657961827,
+      "balanced_accuracy": 0.6788333333333333,
+      "balanced_accuracy_std": 0.1734275809966227,
+      "sensitivity": 0.5866666666666667,
+      "specificity": 0.7709999999999999,
+      "f1": 0.595031746031746,
+      "accuracy": 0.6953571428571428
+    },
+    {
+      "family": "Hybrid fusion",
+      "model": "Hybrid fusion | views + early (LR meta-learner)",
+      "roc_auc": 0.6973333333333334,
+      "roc_auc_std": 0.19443388374301507,
+      "balanced_accuracy": 0.6164999999999999,
+      "balanced_accuracy_std": 0.16514174836229087,
+      "sensitivity": 0.54,
+      "specificity": 0.693,
+      "f1": 0.5165396825396825,
+      "accuracy": 0.6310714285714285
+    },
+    {
+      "family": "Late fusion",
+      "model": "Late fusion | AUC-weighted voting",
+      "roc_auc": 0.696,
+      "roc_auc_std": 0.2111291315855812,
+      "balanced_accuracy": 0.6321666666666667,
+      "balanced_accuracy_std": 0.210084544583879,
+      "sensitivity": 0.5933333333333333,
+      "specificity": 0.6709999999999999,
+      "f1": 0.5692063492063492,
+      "accuracy": 0.64
+    }
+  ],
+  "fusion_gain_auc_vs_best_unimodal": 0.0003333333333332966,
+  "fold_info": [
+    {
+      "fold": 0,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.8448275862068967,
+        "Cognitive profile": 0.1551724137931033
+      },
+      "stacking_coef": {
+        "Time perception": 1.053840840142832,
+        "Cognitive profile": 0.3735072873539798
+      }
+    },
+    {
+      "fold": 1,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.2903225806451614,
+        "Cognitive profile": 0.7096774193548385
+      },
+      "stacking_coef": {
+        "Time perception": 0.5467458479772048,
+        "Cognitive profile": 0.7666403245460162
+      }
+    },
+    {
+      "fold": 2,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.5652173913043481,
+        "Cognitive profile": 0.4347826086956519
+      },
+      "stacking_coef": {
+        "Time perception": 0.3424955567869409,
+        "Cognitive profile": 0.5897704042046934
+      }
+    },
+    {
+      "fold": 3,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9969237780562835,
+        "Cognitive profile": 0.003076221943716532
+      },
+      "stacking_coef": {
+        "Time perception": 0.9726616194800272,
+        "Cognitive profile": -0.35368863689353053
+      }
+    },
+    {
+      "fold": 4,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.8536585365853658,
+        "Cognitive profile": 0.1463414634146342
+      },
+      "stacking_coef": {
+        "Time perception": 1.061746557183165,
+        "Cognitive profile": 0.09805928208871119
+      }
+    },
+    {
+      "fold": 5,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.8169014084507042,
+        "Cognitive profile": 0.18309859154929578
+      },
+      "stacking_coef": {
+        "Time perception": 1.002518393397872,
+        "Cognitive profile": 0.10235186292811539
+      }
+    },
+    {
+      "fold": 6,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.5306122448979592,
+        "Cognitive profile": 0.4693877551020408
+      },
+      "stacking_coef": {
+        "Time perception": 0.7523857003943397,
+        "Cognitive profile": 0.6930841069469751
+      }
+    },
+    {
+      "fold": 7,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9795918367346943,
+        "Cognitive profile": 0.020408163265305732
+      },
+      "stacking_coef": {
+        "Time perception": 0.8575010258535707,
+        "Cognitive profile": -0.006479179017477771
+      }
+    },
+    {
+      "fold": 8,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9971659494069487,
+        "Cognitive profile": 0.002834050593051329
+      },
+      "stacking_coef": {
+        "Time perception": 1.10020365057874,
+        "Cognitive profile": -0.4600573048453503
+      }
+    },
+    {
+      "fold": 9,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.995114890537362,
+        "Cognitive profile": 0.004885109462637959
+      },
+      "stacking_coef": {
+        "Time perception": 0.8327773773355871,
+        "Cognitive profile": 0.10117969246316588
+      }
+    },
+    {
+      "fold": 10,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9967723561799886,
+        "Cognitive profile": 0.0032276438200113918
+      },
+      "stacking_coef": {
+        "Time perception": 1.1137631941315287,
+        "Cognitive profile": -0.0655054286263419
+      }
+    },
+    {
+      "fold": 11,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.9934623766183822,
+        "Cognitive profile": 0.006537623381617741
+      },
+      "stacking_coef": {
+        "Time perception": 0.362762329081368,
+        "Cognitive profile": -0.5107782311766361
+      }
+    },
+    {
+      "fold": 12,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.7733333333333333,
+        "Cognitive profile": 0.22666666666666666
+      },
+      "stacking_coef": {
+        "Time perception": 0.9327230957917416,
+        "Cognitive profile": 0.2305482885750372
+      }
+    },
+    {
+      "fold": 13,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9482758620689657,
+        "Cognitive profile": 0.0517241379310343
+      },
+      "stacking_coef": {
+        "Time perception": 0.9687813342049943,
+        "Cognitive profile": 0.21077857135481345
+      }
+    },
+    {
+      "fold": 14,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.6973684210526315,
+        "Cognitive profile": 0.3026315789473685
+      },
+      "stacking_coef": {
+        "Time perception": 0.7049904771566449,
+        "Cognitive profile": 0.3751605585860305
+      }
+    },
+    {
+      "fold": 15,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.8955223880597015,
+        "Cognitive profile": 0.10447761194029849
+      },
+      "stacking_coef": {
+        "Time perception": 0.9479946992401751,
+        "Cognitive profile": 0.3021437838819102
+      }
+    },
+    {
+      "fold": 16,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9967723561799886,
+        "Cognitive profile": 0.0032276438200113918
+      },
+      "stacking_coef": {
+        "Time perception": 1.077456735391149,
+        "Cognitive profile": 0.06075954987523897
+      }
+    },
+    {
+      "fold": 17,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.43298969072164933,
+        "Cognitive profile": 0.5670103092783507
+      },
+      "stacking_coef": {
+        "Time perception": 0.3562508980230558,
+        "Cognitive profile": 0.35578213706852385
+      }
+    },
+    {
+      "fold": 18,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | SVM (RBF)",
+      "late_weights": {
+        "Time perception": 0.7317073170731703,
+        "Cognitive profile": 0.2682926829268298
+      },
+      "stacking_coef": {
+        "Time perception": 0.20966490485922304,
+        "Cognitive profile": 0.11866359769200296
+      }
+    },
+    {
+      "fold": 19,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.5726495726495727,
+        "Cognitive profile": 0.42735042735042733
+      },
+      "stacking_coef": {
+        "Time perception": 0.8176128198448062,
+        "Cognitive profile": 0.7092117093343705
+      }
+    },
+    {
+      "fold": 20,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9964950862483678,
+        "Cognitive profile": 0.003504913751632189
+      },
+      "stacking_coef": {
+        "Time perception": 1.0035448876988295,
+        "Cognitive profile": 0.20847903027050885
+      }
+    },
+    {
+      "fold": 21,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.6808510638297873,
+        "Cognitive profile": 0.31914893617021267
+      },
+      "stacking_coef": {
+        "Time perception": 1.1574012686030954,
+        "Cognitive profile": 0.904750923543784
+      }
+    },
+    {
+      "fold": 22,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.606060606060606,
+        "Cognitive profile": 0.39393939393939403
+      },
+      "stacking_coef": {
+        "Time perception": 1.0104681950110306,
+        "Cognitive profile": 0.37982294089751784
+      }
+    },
+    {
+      "fold": 23,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.48684210526315785,
+        "Cognitive profile": 0.5131578947368421
+      },
+      "stacking_coef": {
+        "Time perception": 0.632272938404602,
+        "Cognitive profile": 0.5067563856403876
+      }
+    },
+    {
+      "fold": 24,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9952229299363057,
+        "Cognitive profile": 0.004777070063694269
+      },
+      "stacking_coef": {
+        "Time perception": 0.8408187787456246,
+        "Cognitive profile": 0.35785075962302787
+      }
+    },
+    {
+      "fold": 25,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.6031746031746031,
+        "Cognitive profile": 0.39682539682539686
+      },
+      "stacking_coef": {
+        "Time perception": 0.6681891695117647,
+        "Cognitive profile": 0.4456894304761004
+      }
+    },
+    {
+      "fold": 26,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.861111111111111,
+        "Cognitive profile": 0.138888888888889
+      },
+      "stacking_coef": {
+        "Time perception": 0.6810977362542416,
+        "Cognitive profile": -0.03404934406808868
+      }
+    },
+    {
+      "fold": 27,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9972732781256312,
+        "Cognitive profile": 0.002726721874368814
+      },
+      "stacking_coef": {
+        "Time perception": 1.1417619894804805,
+        "Cognitive profile": 0.1302392861115876
+      }
+    },
+    {
+      "fold": 28,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.8947368421052627,
+        "Cognitive profile": 0.10526315789473724
+      },
+      "stacking_coef": {
+        "Time perception": 0.5537377566144618,
+        "Cognitive profile": -0.15025397642963126
+      }
+    },
+    {
+      "fold": 29,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.9971282705807275,
+        "Cognitive profile": 0.0028717294192724956
+      },
+      "stacking_coef": {
+        "Time perception": 1.0253627052897085,
+        "Cognitive profile": 0.3826100997130829
+      }
+    },
+    {
+      "fold": 30,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.875,
+        "Cognitive profile": 0.12499999999999994
+      },
+      "stacking_coef": {
+        "Time perception": 0.9507731504430714,
+        "Cognitive profile": 0.11576885421346494
+      }
+    },
+    {
+      "fold": 31,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.9952782149800944,
+        "Cognitive profile": 0.004721785019905563
+      },
+      "stacking_coef": {
+        "Time perception": 0.8247442962000652,
+        "Cognitive profile": -0.3241135533922836
+      }
+    },
+    {
+      "fold": 32,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | SVM (RBF)",
+      "late_weights": {
+        "Time perception": 0.9928514694201748,
+        "Cognitive profile": 0.007148530579825255
+      },
+      "stacking_coef": {
+        "Time perception": 0.6610308683878878,
+        "Cognitive profile": -0.14599347476714883
+      }
+    },
+    {
+      "fold": 33,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.8888888888888885,
+        "Cognitive profile": 0.11111111111111151
+      },
+      "stacking_coef": {
+        "Time perception": 0.4957963478229145,
+        "Cognitive profile": -0.05363921027680854
+      }
+    },
+    {
+      "fold": 34,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.7662337662337664,
+        "Cognitive profile": 0.23376623376623362
+      },
+      "stacking_coef": {
+        "Time perception": 0.7587075730564208,
+        "Cognitive profile": 0.5013097521411669
+      }
+    },
+    {
+      "fold": 35,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.43478260869565205,
+        "Cognitive profile": 0.5652173913043479
+      },
+      "stacking_coef": {
+        "Time perception": 0.49527521152671444,
+        "Cognitive profile": 0.5688581535521356
+      }
+    },
+    {
+      "fold": 36,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.7246376811594203,
+        "Cognitive profile": 0.2753623188405797
+      },
+      "stacking_coef": {
+        "Time perception": 0.9373062821783308,
+        "Cognitive profile": 0.397314769003173
+      }
+    },
+    {
+      "fold": 37,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.927272727272727,
+        "Cognitive profile": 0.07272727272727302
+      },
+      "stacking_coef": {
+        "Time perception": 0.641943216439126,
+        "Cognitive profile": -0.14506598502410947
+      }
+    },
+    {
+      "fold": 38,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.7682926829268294,
+        "Cognitive profile": 0.23170731707317058
+      },
+      "stacking_coef": {
+        "Time perception": 0.7409068933860655,
+        "Cognitive profile": 0.4026162861960599
+      }
+    },
+    {
+      "fold": 39,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.995698582125219,
+        "Cognitive profile": 0.004301417874780946
+      },
+      "stacking_coef": {
+        "Time perception": 0.5829810053539732,
+        "Cognitive profile": -0.03467553928079518
+      }
+    },
+    {
+      "fold": 40,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9952782149800944,
+        "Cognitive profile": 0.004721785019905566
+      },
+      "stacking_coef": {
+        "Time perception": 0.7137237640058218,
+        "Cognitive profile": -0.2171990325856203
+      }
+    },
+    {
+      "fold": 41,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.7580645161290324,
+        "Cognitive profile": 0.24193548387096758
+      },
+      "stacking_coef": {
+        "Time perception": 0.9858249621993954,
+        "Cognitive profile": 0.3391892819730622
+      }
+    },
+    {
+      "fold": 42,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9850746268656716,
+        "Cognitive profile": 0.014925373134328422
+      },
+      "stacking_coef": {
+        "Time perception": 0.9499938177226974,
+        "Cognitive profile": 0.15034554542483208
+      }
+    },
+    {
+      "fold": 43,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.5090909090909091,
+        "Cognitive profile": 0.49090909090909085
+      },
+      "stacking_coef": {
+        "Time perception": 0.4909120887414663,
+        "Cognitive profile": 0.4839457558448445
+      }
+    },
+    {
+      "fold": 44,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.8160919540229885,
+        "Cognitive profile": 0.1839080459770115
+      },
+      "stacking_coef": {
+        "Time perception": 1.2237175824121018,
+        "Cognitive profile": 0.5266262514026603
+      }
+    },
+    {
+      "fold": 45,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.6707317073170732,
+        "Cognitive profile": 0.32926829268292673
+      },
+      "stacking_coef": {
+        "Time perception": 1.092226382726987,
+        "Cognitive profile": 0.7071446098283687
+      }
+    },
+    {
+      "fold": 46,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.6081081081081082,
+        "Cognitive profile": 0.3918918918918918
+      },
+      "stacking_coef": {
+        "Time perception": 0.6057474836587013,
+        "Cognitive profile": 0.726223037583356
+      }
+    },
+    {
+      "fold": 47,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Random Forest",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Time perception": 0.6444444444444445,
+        "Cognitive profile": 0.35555555555555546
+      },
+      "stacking_coef": {
+        "Time perception": 0.5458633211592961,
+        "Cognitive profile": 0.7080384654341016
+      }
+    },
+    {
+      "fold": 48,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Random Forest"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.736842105263158,
+        "Cognitive profile": 0.263157894736842
+      },
+      "stacking_coef": {
+        "Time perception": 0.5944400246869387,
+        "Cognitive profile": 0.24034747147403848
+      }
+    },
+    {
+      "fold": 49,
+      "best_view_model": {
+        "Time perception": "Unimodal | Time perception | Logistic Regression",
+        "Cognitive profile": "Unimodal | Cognitive profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Time perception": 0.9956111833550065,
+        "Cognitive profile": 0.004388816644993498
+      },
+      "stacking_coef": {
+        "Time perception": 0.7781741947326465,
+        "Cognitive profile": -0.2840165279450247
+      }
+    }
+  ],
+  "excluded_columns": {
+    "math": "diagnostic criterion (label leakage)",
+    "reading": "46% missing; values/missingness separate the groups perfectly"
+  },
+  "xai": {
+    "modality_share": {
+      "Time perception": 0.7071725779736985,
+      "Cognitive profile": 0.29282742202630146
+    },
+    "top_features": {
+      "wf_500ms": 0.13028590618725583,
+      "wf_1500ms": 0.08343001624426698,
+      "nonverbal_iq": 0.058825113539792515,
+      "age": 0.05141608733635125,
+      "pse_1500ms": 0.036546461615721886,
+      "pse_500ms": 0.025239259500661585,
+      "gender_male": 0.0038390654646459953
+    },
+    "direction_corr": {
+      "pse_500ms": -0.0975601277491959,
+      "wf_500ms": 0.7650006230146678,
+      "pse_1500ms": NaN,
+      "wf_1500ms": NaN,
+      "age": -0.4664292462063523,
+      "nonverbal_iq": NaN,
+      "gender_male": 0.45895082224396183
+    }
+  }
+}

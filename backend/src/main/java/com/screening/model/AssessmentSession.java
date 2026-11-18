@@ -6,7 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Document(collection = "assessment_sessions")
 public class AssessmentSession {
@@ -36,7 +38,7 @@ public class AssessmentSession {
     private String status; // "IN_PROGRESS", "COMPLETED"
 
     @Field("total_questions")
-    private int totalQuestions = 15;
+    private int totalQuestions = 17;
 
     @Field("created_at")
     private Instant createdAt = Instant.now();
@@ -49,6 +51,9 @@ public class AssessmentSession {
 
     @Field("report")
     private AssessmentReport report;
+
+    /** Confirmed outcome per disorder, e.g. labels.DYSLEXIA = {value: 1, source: "specialist", at: ...}. Used only for retraining. */
+    private Map<String, Map<String, Object>> labels = new HashMap<>();
 
     public AssessmentSession() {}
 
@@ -167,5 +172,13 @@ public class AssessmentSession {
 
     public void setReport(AssessmentReport report) {
         this.report = report;
+    }
+
+    public Map<String, Map<String, Object>> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Map<String, Map<String, Object>> labels) {
+        this.labels = labels;
     }
 }

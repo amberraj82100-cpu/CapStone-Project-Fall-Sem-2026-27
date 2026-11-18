@@ -1,0 +1,17 @@
+experiment,family,n_models,best_model,best_short,roc_auc,roc_auc_std,balanced_accuracy,sensitivity,specificity,gain_vs_best_unimodal
+dyslexia,Hybrid fusion,1,Hybrid fusion | views + early (LR meta-learner),views + early (LR meta-learner),0.8628,0.02,0.7694,0.7815,0.7573,0.0589
+dyslexia,Early fusion,4,Early fusion | XGBoost,XGBoost,0.8618,0.0229,0.7779,0.8111,0.7446,0.058
+dyslexia,Late fusion,3,Late fusion | soft voting,soft voting,0.8459,0.0261,0.7607,0.8,0.7215,0.0421
+dyslexia,Unimodal,6,Unimodal | Interaction behaviour | XGBoost,Interaction behaviour · XGBoost,0.8038,0.0387,0.7338,0.7537,0.7139,0.0
+dysgraphia,Early fusion,4,Early fusion | Logistic Regression,Logistic Regression,0.9331,0.0343,0.8498,0.8626,0.837,0.0128
+dysgraphia,Late fusion,3,Late fusion | AUC-weighted voting,AUC-weighted voting,0.923,0.0409,0.8466,0.8266,0.8667,0.0027
+dysgraphia,Hybrid fusion,1,Hybrid fusion | views + early (LR meta-learner),views + early (LR meta-learner),0.923,0.0413,0.8397,0.8177,0.8617,0.0027
+dysgraphia,Unimodal,6,Unimodal | Deep visual (EfficientNet-B0) | Logistic Regression,Deep visual (EfficientNet-B0) · Logistic Regression,0.9203,0.0422,0.8306,0.8094,0.8519,0.0
+dyscalculia_castaldi2024,Early fusion,3,Early fusion | Random Forest,Random Forest,0.7657,0.1623,0.6497,0.6333,0.666,0.0003
+dyscalculia_castaldi2024,Unimodal,4,Unimodal | Time perception | Logistic Regression,Time perception · Logistic Regression,0.7653,0.1743,0.6788,0.5867,0.771,0.0
+dyscalculia_castaldi2024,Hybrid fusion,1,Hybrid fusion | views + early (LR meta-learner),views + early (LR meta-learner),0.6973,0.1944,0.6165,0.54,0.693,-0.068
+dyscalculia_castaldi2024,Late fusion,3,Late fusion | AUC-weighted voting,AUC-weighted voting,0.696,0.2111,0.6322,0.5933,0.671,-0.0693
+dyscalculia_synthetic,Early fusion,3,Early fusion | Random Forest,Random Forest,0.7419,0.0274,0.6821,0.6109,0.7534,0.011
+dyscalculia_synthetic,Late fusion,3,Late fusion | AUC-weighted voting,AUC-weighted voting,0.741,0.0203,0.6729,0.5933,0.7526,0.0101
+dyscalculia_synthetic,Hybrid fusion,1,Hybrid fusion | views + early (LR meta-learner),views + early (LR meta-learner),0.7389,0.0165,0.6829,0.6233,0.7426,0.008
+dyscalculia_synthetic,Unimodal,8,Unimodal | Response time | Logistic Regression,Response time · Logistic Regression,0.7309,0.0079,0.6707,0.6135,0.728,0.0

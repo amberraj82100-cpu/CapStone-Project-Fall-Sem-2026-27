@@ -1,0 +1,22 @@
+{
+  "n_children": 3000,
+  "prevalence": 0.1,
+  "label_noise": 0.05,
+  "confounder_rate": 0.08,
+  "seed": 2026,
+  "dd_shift": {
+    "ans": -1.0,
+    "symb": -1.4,
+    "speed": -0.3,
+    "attn": -0.2,
+    "subit": -0.3
+  },
+  "trials": {
+    "subitize": 10,
+    "magnitude": 16,
+    "numberline": 10,
+    "sequence": 6,
+    "arithmetic": 10
+  },
+  "numberline_max": 20
+}

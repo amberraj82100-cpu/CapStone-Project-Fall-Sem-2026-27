@@ -1,0 +1,251 @@
+{
+  "task": "dyscalculia_synthetic",
+  "SYNTHETIC": true,
+  "n_samples": 3000,
+  "n_positive": 401,
+  "views": {
+    "Demographics": 2,
+    "Task accuracy": 6,
+    "Response time": 11,
+    "Number-sense profile": 8
+  },
+  "majority_baseline_accuracy": 0.8663333333333334,
+  "best_model": "Early fusion | Random Forest",
+  "best_model_metrics": {
+    "balanced_accuracy": 0.6821154395094665,
+    "roc_auc": 0.7418803558325877,
+    "pr_auc": 0.3742033041385994,
+    "sensitivity": 0.6108641975308642,
+    "specificity": 0.7533666814880687,
+    "precision": 0.2824846293056196,
+    "f1": 0.3833293488914445,
+    "mcc": 0.2756401595301167,
+    "accuracy": 0.7343333333333333,
+    "balanced_accuracy_std": 0.019408510950878918,
+    "roc_auc_std": 0.027368841577588024,
+    "pr_auc_std": 0.059888672600734945,
+    "sensitivity_std": 0.07101604705943705,
+    "specificity_std": 0.07119768665716936,
+    "precision_std": 0.036276880234849304,
+    "f1_std": 0.030317241115712674,
+    "mcc_std": 0.03624237571352535,
+    "accuracy_std": 0.053872276935565115
+  },
+  "best_model_pooled_auc_95ci": [
+    0.7153345567168804,
+    0.7679562171638002
+  ],
+  "best_model_pooled_confusion": {
+    "tp": 245,
+    "fp": 641,
+    "tn": 1958,
+    "fn": 156
+  },
+  "best_per_family": [
+    {
+      "family": "Early fusion",
+      "model": "Early fusion | Random Forest",
+      "roc_auc": 0.7418803558325877,
+      "roc_auc_std": 0.027368841577588024,
+      "balanced_accuracy": 0.6821154395094665,
+      "balanced_accuracy_std": 0.019408510950878918,
+      "sensitivity": 0.6108641975308642,
+      "specificity": 0.7533666814880687,
+      "f1": 0.3833293488914445,
+      "accuracy": 0.7343333333333333
+    },
+    {
+      "family": "Late fusion",
+      "model": "Late fusion | AUC-weighted voting",
+      "roc_auc": 0.741026355792332,
+      "roc_auc_std": 0.020321018947044547,
+      "balanced_accuracy": 0.6729451429716362,
+      "balanced_accuracy_std": 0.02315358852580041,
+      "sensitivity": 0.5933024691358024,
+      "specificity": 0.75258781680747,
+      "f1": 0.3718379025887203,
+      "accuracy": 0.7313333333333334
+    },
+    {
+      "family": "Hybrid fusion",
+      "model": "Hybrid fusion | views + early (LR meta-learner)",
+      "roc_auc": 0.7388941862821519,
+      "roc_auc_std": 0.016471649129947592,
+      "balanced_accuracy": 0.6829455135066889,
+      "balanced_accuracy_std": 0.016211291206406152,
+      "sensitivity": 0.6233024691358025,
+      "specificity": 0.7425885578775752,
+      "f1": 0.3801561652606214,
+      "accuracy": 0.7266666666666667
+    },
+    {
+      "family": "Unimodal",
+      "model": "Unimodal | Response time | Logistic Regression",
+      "roc_auc": 0.7308789916002906,
+      "roc_auc_std": 0.007927762326662447,
+      "balanced_accuracy": 0.6707205397186129,
+      "balanced_accuracy_std": 0.012071365450330546,
+      "sensitivity": 0.6134567901234568,
+      "specificity": 0.727984289313769,
+      "f1": 0.3641129352618944,
+      "accuracy": 0.7126666666666667
+    }
+  ],
+  "fusion_gain_auc_vs_best_unimodal": 0.01100136423229714,
+  "fold_info": [
+    {
+      "fold": 0,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | Logistic Regression",
+        "Response time": "Unimodal | Response time | Logistic Regression",
+        "Number-sense profile": "Unimodal | Number-sense profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Demographics": 0.0016179876428433072,
+        "Task accuracy": 0.35338739843652023,
+        "Response time": 0.38100810066889035,
+        "Number-sense profile": 0.2639865132517461
+      },
+      "stacking_coef": {
+        "Demographics": 0.03584334657435743,
+        "Task accuracy": 0.3885748172528164,
+        "Response time": 0.6459090424139515,
+        "Number-sense profile": 0.19527741211537314
+      }
+    },
+    {
+      "fold": 1,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | Logistic Regression",
+        "Response time": "Unimodal | Response time | Logistic Regression",
+        "Number-sense profile": "Unimodal | Number-sense profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Demographics": 0.02254652615548842,
+        "Task accuracy": 0.33623046274955803,
+        "Response time": 0.3756971242757679,
+        "Number-sense profile": 0.26552588681918565
+      },
+      "stacking_coef": {
+        "Demographics": -0.07094167405069036,
+        "Task accuracy": 0.27293647904604695,
+        "Response time": 0.6956439024628243,
+        "Number-sense profile": 0.32403418176620746
+      }
+    },
+    {
+      "fold": 2,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | Logistic Regression",
+        "Response time": "Unimodal | Response time | Logistic Regression",
+        "Number-sense profile": "Unimodal | Number-sense profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Random Forest",
+      "late_weights": {
+        "Demographics": 0.036824029101550367,
+        "Task accuracy": 0.3191284358155643,
+        "Response time": 0.3677178880575338,
+        "Number-sense profile": 0.2763296470253515
+      },
+      "stacking_coef": {
+        "Demographics": 0.1505284740906961,
+        "Task accuracy": 0.17130548794577707,
+        "Response time": 0.728865564989079,
+        "Number-sense profile": 0.3985002627619422
+      }
+    },
+    {
+      "fold": 3,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | Logistic Regression",
+        "Response time": "Unimodal | Response time | Logistic Regression",
+        "Number-sense profile": "Unimodal | Number-sense profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Demographics": 0.0016663880068684873,
+        "Task accuracy": 0.3623380574423753,
+        "Response time": 0.38397321765676085,
+        "Number-sense profile": 0.25202233689399534
+      },
+      "stacking_coef": {
+        "Demographics": -0.02094929072087109,
+        "Task accuracy": 0.4137405158469229,
+        "Response time": 0.6475567007276031,
+        "Number-sense profile": 0.2388033917417016
+      }
+    },
+    {
+      "fold": 4,
+      "best_view_model": {
+        "Demographics": "Unimodal | Demographics | XGBoost",
+        "Task accuracy": "Unimodal | Task accuracy | Logistic Regression",
+        "Response time": "Unimodal | Response time | Logistic Regression",
+        "Number-sense profile": "Unimodal | Number-sense profile | Logistic Regression"
+      },
+      "best_early": "Early fusion | Logistic Regression",
+      "late_weights": {
+        "Demographics": 0.03188680868787721,
+        "Task accuracy": 0.3402386086028291,
+        "Response time": 0.3791499927048168,
+        "Number-sense profile": 0.2487245900044769
+      },
+      "stacking_coef": {
+        "Demographics": 0.21340620942727673,
+        "Task accuracy": 0.36631071235443585,
+        "Response time": 0.6856485234607183,
+        "Number-sense profile": 0.2626543691067851
+      }
+    }
+  ],
+  "label_noise_auc_ceiling": 0.8468186018217251,
+  "xai": {
+    "modality_share": {
+      "Demographics": 0.044826195725643996,
+      "Task accuracy": 0.15370528641487338,
+      "Response time": 0.5668121954692416,
+      "Number-sense profile": 0.2346563223902409
+    },
+    "top_features": {
+      "rt_median_arithmetic": 0.03691782598529126,
+      "rt_median_sequence": 0.035413790863688,
+      "acc_arithmetic": 0.023914700179173784,
+      "rt_median_magnitude": 0.017553030829784627,
+      "numberline_pae": 0.016410648546936822,
+      "numberline_linear_r2": 0.013218988081686513,
+      "age": 0.011396472762220618,
+      "rt_cv_magnitude": 0.010391104072319985,
+      "rt_cv_arithmetic": 0.009816768540914058,
+      "rt_median_subitize": 0.008635938790697321,
+      "rt_cv_subitize": 0.008522492533107315,
+      "subitize_mean_abs_error": 0.008400760785622869
+    },
+    "direction_corr": {
+      "rt_median_arithmetic": 0.865415352075389,
+      "rt_median_sequence": 0.8520950007026307,
+      "acc_arithmetic": -0.8780140630382153,
+      "rt_median_magnitude": -0.8511091092295863,
+      "numberline_pae": 0.7107676683195616,
+      "numberline_linear_r2": -0.7388483182586828,
+      "age": 0.6763654140863086,
+      "rt_cv_magnitude": -0.803618294052408,
+      "rt_cv_arithmetic": -0.6130706048479913,
+      "rt_median_subitize": -0.6580761446371877,
+      "rt_cv_subitize": 0.5927164491009508,
+      "subitize_mean_abs_error": 0.7616556359699734
+    },
+    "planted_effects_sd": {
+      "symb (arithmetic/sequence)": -1.4,
+      "ans (magnitude/numberline)": -1.0,
+      "speed": -0.3,
+      "subit": -0.3,
+      "attn": -0.2
+    }
+  }
+}

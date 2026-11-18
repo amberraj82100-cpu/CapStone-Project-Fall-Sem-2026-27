@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import { Brain, Database, Shield } from 'lucide-react';
+import { BarChart3, Brain, Database, Shield } from 'lucide-react';
 import RegistrationView from './components/RegistrationView';
 import AssessmentEngine from './components/AssessmentEngine';
 import DiagnosticReportView from './components/DiagnosticReportView';
 import HistoryModal from './components/HistoryModal';
+import ModelDashboard from './components/ModelDashboard';
+import { API_BASE } from './api';
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('REGISTRATION');
+  const [currentScreen, setCurrentScreen] = useState(
+    typeof window !== 'undefined' && window.location.hash === '#dashboard' ? 'DASHBOARD' : 'REGISTRATION',
+  );
   const [activeSession, setActiveSession] = useState(null);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
   const handleStart = async (formData) => {
     try {
-      const res = await fetch('http://localhost:8080/api/assessments/register', {
+      const res = await fetch(`${API_BASE}/api/assessments/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -22,11 +26,11 @@ export default function App() {
         setActiveSession(session);
         setCurrentScreen('ASSESSMENT');
       } else {
-        alert('Could not start assessment. Ensure the Spring Boot backend is running on port 8080.');
+        alert(`Could not start assessment. Ensure the Spring Boot backend is running at ${API_BASE}.`);
       }
     } catch (err) {
       console.error('Registration failed:', err);
-      alert('Network error — could not connect to the backend at http://localhost:8080.');
+      alert(`Network error — could not connect to the backend at ${API_BASE}.`);
     }
   };
 
@@ -131,6 +135,16 @@ export default function App() {
         </div>
 
         {/* Actions */}
+        <div style={{ display: 'flex', gap: 10 }}>
+        <button
+          id="nav-dashboard-btn"
+          className="btn-secondary"
+          onClick={() => setCurrentScreen(currentScreen === 'DASHBOARD' ? 'REGISTRATION' : 'DASHBOARD')}
+          style={{ fontSize: '0.84rem', padding: '7px 16px' }}
+        >
+          <BarChart3 size={15} color="var(--dyslexia)" />
+          {currentScreen === 'DASHBOARD' ? 'Back to Assessment' : 'Model Dashboard'}
+        </button>
         <button
           id="nav-history-btn"
           className="btn-secondary"
@@ -140,6 +154,7 @@ export default function App() {
           <Database size={15} color="var(--dysgraphia)" />
           MongoDB Records
         </button>
+        </div>
       </header>
 
       {/* ── Main Content ── */}
@@ -157,6 +172,8 @@ export default function App() {
             onCompleted={handleAssessmentCompleted}
           />
         )}
+
+        {currentScreen === 'DASHBOARD' && <ModelDashboard />}
 
         {currentScreen === 'REPORT' && activeSession && (
           <DiagnosticReportView

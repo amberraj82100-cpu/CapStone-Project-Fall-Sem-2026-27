@@ -10,6 +10,9 @@ import DotConnectGame        from './games/DotConnectGame';
 import KeySequenceGame       from './games/KeySequenceGame';
 import NumberLineGame        from './games/NumberLineGame';
 import MultipleChoiceGame    from './games/MultipleChoiceGame';
+import CopySentenceGame      from './games/CopySentenceGame';
+import NumberSenseRound      from './games/NumberSenseRound';
+import { API_BASE } from '../api';
 
 const DOMAIN_META = {
   DYSLEXIA:    { icon: BookOpen,    color: 'var(--dyslexia)',    label: 'Dyslexia'    },
@@ -32,7 +35,7 @@ export default function AssessmentEngine({ session, onCompleted }) {
   useEffect(() => {
     const fetchQ = async () => {
       try {
-        const res = await fetch('http://localhost:8080/api/assessments/questions');
+        const res = await fetch(`${API_BASE}/api/assessments/questions`);
         if (res.ok) setQuestions(await res.json());
       } catch (err) {
         console.error('Failed to load questions:', err);
@@ -72,6 +75,7 @@ export default function AssessmentEngine({ session, onCompleted }) {
       motorHesitationCount: Number(answerData.hesitationCount ?? 0),
       reversalDetected:    Boolean(answerData.reversalDetected),
       magnitudeDistance:   Number(answerData.magnitudeDistance ?? 0),
+      rawData:             answerData.rawData ?? null,   // handwriting image / trial logs for the ML models
     };
 
     const nextResponses = [...responses, responsePayload];
@@ -80,10 +84,10 @@ export default function AssessmentEngine({ session, onCompleted }) {
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex(prev => prev + 1);
     } else {
-      /* All 15 done — submit to backend */
+      /* All questions done — submit to backend */
       setSubmitting(true);
       try {
-        const res = await fetch(`http://localhost:8080/api/assessments/${session.id}/submit`, {
+        const res = await fetch(`${API_BASE}/api/assessments/${session.id}/submit`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(nextResponses),
@@ -137,6 +141,8 @@ export default function AssessmentEngine({ session, onCompleted }) {
       case 'DOT_CONNECT':         return <DotConnectGame        key={currentQ.id} question={currentQ} onAnswer={handleAnswer} />;
       case 'KEY_SEQUENCE':        return <KeySequenceGame       key={currentQ.id} question={currentQ} onAnswer={handleAnswer} />;
       case 'NUMBER_LINE':         return <NumberLineGame        key={currentQ.id} question={currentQ} onAnswer={handleAnswer} />;
+      case 'COPY_SENTENCE':       return <CopySentenceGame      key={currentQ.id} question={currentQ} onAnswer={handleAnswer} />;
+      case 'NUMBER_ROUND':        return <NumberSenseRound      key={currentQ.id} question={currentQ} onAnswer={handleAnswer} />;
       default:                    return <MultipleChoiceGame    key={currentQ.id} question={currentQ} onAnswer={handleAnswer} />;
     }
   };
